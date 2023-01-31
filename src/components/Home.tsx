@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Card } from "./Card";
 
 export type Product = {
   id: number;
@@ -13,7 +14,7 @@ export type Product = {
   }
 }
 
-export const Home = ()=> {
+export const Home = (): JSX.Element => {
   
   const [products, setProducts] = useState<Array<Product>>([])
   
@@ -30,18 +31,18 @@ export const Home = ()=> {
 
   return (
     <>
-      <h1>Home</h1>
-      <ul>
-        {
-          products.map((product) => (
+      <section>
+        <h1>Products</h1>
+        <div className="cards">
+          {products.map(({ id, title, image })  => (
+            <Card key={id} id={id} title={title} image={image} />
 
-            <li key={product.id}>{product.title}
-              <img style={ {width:"24px", height: "20px"}} src={ product.image} alt="" />
-            </li>
-          ))
-        }
-      </ul>
+            // <li key={id}>{title}
+            //   <img style={ {width:"24px", height: "20px"}} src={ image} alt="" />
+            // </li>
+          ))}
+        </div>
+      </section>
     </>
-
-  )
+  );
 }
