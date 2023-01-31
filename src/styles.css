@@ -14,11 +14,16 @@ body {
 }
 
 .App {
-  background-image: url(/src/fondo.svg);
+  background-image: url(/src/fondo.svg),  url(/src/fondo.svg),  url(/src/fondo.svg);
+  background-position: right bottom, right top, left center;
+  background-color:  #E5E5E5; 
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  height:100vh;
   width: 100%;
-  width: 100vh;
-  background-color:  #E5E5E5;
-
+  background-size: 30%, 20%, 30%;
+  text-align: center;
 }
 
-
+h1 {
+  padding: 1rem;
+}
