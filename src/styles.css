@@ -74,7 +74,9 @@ p {
   border: 1px solid aliceblue;
   border-radius: 10px;
   background-color: aliceblue;
+  justify-content: center;
 }
+
 .card-body {
   margin-top: 2rem;
   display: flex;
@@ -105,6 +107,7 @@ button {
 
 .cart {
   display: flex;
+  justify-content: center;
   margin: 0.5rem;
   border-bottom: 1px solid grey;
   padding: 0.8rem; 

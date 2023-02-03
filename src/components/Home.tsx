@@ -25,13 +25,15 @@ export interface PropsProduct {
 export const Home = (): JSX.Element => {
   
   const [products, setProducts] = useState<Array<Product>>([])
+  const [productsCart, setProductsCart] = useState<Array<Product>>([]);
   
   async function fetchApi(){
     const response = await fetch("https://fakestoreapi.com/products?limit=10");
     const data = await response.json();
     setProducts(data);
-
   }
+
+  
 
  useEffect(() => {
   fetchApi()
@@ -56,17 +58,23 @@ export const Home = (): JSX.Element => {
         </section>
         <section className="products-cart">
           <h1>Your Cart</h1>
-          <div className="cards">
-            {products.map(({ id, title, image, price }) => (
-              <AddCart
-                key={id}
-                id={id}
-                title={title}
-                image={image}
-                price={price}
-              />
-            ))}
-          </div>
+          {
+            productsCart ?
+              <p>Your cart is empty</p>
+            :
+              <div className="cards">
+                {products.map(({ id, title, image, price }) => (
+                  <AddCart
+                    key={id}
+                    id={id}
+                    title={title}
+                    image={image}
+                    price={price}
+                  />
+                ))}
+              </div>
+
+          }
         </section>
       </section>
     </>
