@@ -146,3 +146,23 @@ button {
   margin: auto;
   padding: 0.2rem;
 }
+
+.total-price-cart {
+  text-align: end;
+  margin: 1rem; 
+  margin-top: 1rem; 
+  font-size: 1.3rem;
+
+}
+
+.total-price-body {
+  padding: 1rem;
+
+}
+
+.total-price {
+  color: #6B00F5;
+  font-size: 1.3rem;
+
+}
+

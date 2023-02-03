@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AddCart } from "./AddCart";
 import { Card } from "./Card";
+import { TotalPriceCart } from "./TotalPriceCart";
 
 export type Product = {
   id: number;
@@ -33,7 +34,7 @@ export const Home = (): JSX.Element => {
     setProducts(data);
   }
 
-  
+
 
  useEffect(() => {
   fetchApi()
@@ -61,19 +62,21 @@ export const Home = (): JSX.Element => {
           {
             productsCart ?
               <p>Your cart is empty</p>
-            :
-              <div className="cards">
-                {products.map(({ id, title, image, price }) => (
-                  <AddCart
+              :
+              <section>
+                <div className="cards">
+                  {products.map(({ id, title, image, price }) => (
+                    <AddCart
                     key={id}
                     id={id}
                     title={title}
                     image={image}
                     price={price}
-                  />
-                ))}
-              </div>
-
+                    />
+                    ))}
+                </div>
+                <TotalPriceCart/>
+              </section>
           }
         </section>
       </section>
