@@ -65,7 +65,7 @@ p {
   grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
   gap: 0.8rem;
   padding: 1rem;
-  margin: auto;
+  margin: auto; 
 }
 
 .card {
@@ -96,6 +96,11 @@ button {
   font-size: 1rem;
   font-weight: bold;  
   color: beige;  
+}
+
+.button-addCart {
+  background-color: black;
+   border: 1px solid black;
 }
 
 .cart {

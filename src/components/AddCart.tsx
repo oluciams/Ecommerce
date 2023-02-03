@@ -22,7 +22,6 @@ export const AddCart = ({ title, image, price }: PropsProduct): JSX.Element => {
     let PriceTotalProduct = addPrice + price
     setCountProduct(addProduct)  
     setTotalPriceProduct(PriceTotalProduct)
-    console.log("sumar")
   }
 
   function restProduct() {
@@ -32,7 +31,6 @@ export const AddCart = ({ title, image, price }: PropsProduct): JSX.Element => {
       let priceTotalProduct = restPrice - price;
       setTotalPriceProduct(priceTotalProduct);
       setCountProduct(restProduct);
-      console.log("restar");
     }
     return
   }
