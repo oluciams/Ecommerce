@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { AddCart } from "./AddCart";
 import { Card } from "./Card";
 
 export type Product = {
@@ -14,6 +15,13 @@ export type Product = {
   }
 }
 
+export interface PropsProduct {
+  id: number;
+  title: string;
+  image: string;
+  price: number;
+}
+
 export const Home = (): JSX.Element => {
   
   const [products, setProducts] = useState<Array<Product>>([])
@@ -22,7 +30,7 @@ export const Home = (): JSX.Element => {
     const response = await fetch("https://fakestoreapi.com/products?limit=10");
     const data = await response.json();
     setProducts(data);
-    console.log(data)
+
   }
 
  useEffect(() => {
@@ -31,17 +39,35 @@ export const Home = (): JSX.Element => {
 
   return (
     <>
-      <section>
-        <h1>Products</h1>
-        <div className="cards">
-          {products.map(({ id, title, image })  => (
-            <Card key={id} id={id} title={title} image={image} />
-
-            // <li key={id}>{title}
-            //   <img style={ {width:"24px", height: "20px"}} src={ image} alt="" />
-            // </li>
-          ))}
-        </div>
+      <section className="container">
+        <section className="products">
+          <h1>To Go Products</h1>
+          <div className="cards">
+            {products.map(({ id, title, image, price }) => (
+              <Card
+                key={id}
+                id={id}
+                title={title}
+                image={image}
+                price={price}
+              />
+            ))}
+          </div>
+        </section>
+        <section className="products-cart">
+          <h1>Your Cart</h1>
+          <div className="cards">
+            {products.map(({ id, title, image, price }) => (
+              <AddCart
+                key={id}
+                id={id}
+                title={title}
+                image={image}
+                price={price}
+              />
+            ))}
+          </div>
+        </section>
       </section>
     </>
   );

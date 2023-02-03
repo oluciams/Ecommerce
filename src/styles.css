@@ -20,43 +20,121 @@ body {
 
 .App { 
   height:100vh;
-  width: 90%; 
+  width: 80%; 
   text-align: center;
   margin: auto;
 }
 
 h1 {
   padding: 0.5rem;
+  font-size: 2rem;
+}
+
+h5 {
+  font-size: 1rem;
+  margin: 0.3rem;
+}
+
+p {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.container {
+  padding: 2rem ;
+  display: flex;
+  justify-content: space-around;  
+}
+
+.products {
+  /* border: 2px solid blue; */
+  border-radius: 30px;
+  background: white;
+  width: 40%;
+}
+
+.products-cart {
+  /* border: 2px solid black; */
+  border-radius: 30px;
+  width: 40%;
+  background-color: white;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.8rem;
   padding: 1rem;
+  margin: auto;
 }
 
 .card {
-  display: grid;
-  place-content: center;
-  border-radius: 4px;
-  border: 1px solid white;
-  background-color: white;  
+  display: flex;
+  padding: 0.5rem;
+  border: 1px solid aliceblue;
+  border-radius: 10px;
+  background-color: aliceblue;
+}
+.card-body {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 img {
-  border-radius: 20px;
   height: auto;
-  width: 100px;
-  margin: 10px;
+  width: 6rem;
+  margin: 1rem;
 }
 
 button {
-  margin: 0.5rem;
+  margin-top: 1rem;
   padding: 0.4rem;
   border: 1px solid #6B00F5;
-  border-radius: 3px;
+  border-radius: 20px;
   background-color: #6B00F5;
-  font-size: 1rem;  
-  color: beige;
+  font-size: 1rem;
+  font-weight: bold;  
+  color: beige;  
+}
+
+.cart {
+  display: flex;
+  margin: 0.5rem;
+  border-bottom: 1px solid grey;
+  padding: 0.8rem; 
+}
+
+.cart-body {
+  width: 60%; 
+}
+
+.button-cart {
+   border-radius: 50%;
+   font-weight: bold;
+   width: 1.5rem;
+   font-size: medium;
+   margin: 0.3rem;
+}
+
+.cart-total {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.image-cart {
+  border-radius: 10px;
+  height: auto;
+  width: 50px;
+}
+
+.image-count {  
+  border-radius: 50%;
+  color: white;
+  background-color: black;
+  width: 40%;
+  font-size: 1rem;
+  margin: auto;
+  padding: 0.2rem;
 }
