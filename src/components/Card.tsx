@@ -2,21 +2,30 @@ import { useState } from "react";
 import { PropsProduct } from "./Home";
 // export type FormatNumber = (num: number) => number;
 
-export const Card = ({ id, title, image, price }: PropsProduct): JSX.Element => {
+export const Card = ({
+  id,
+  title,
+  image,
+  price,
+  products,
+}: PropsProduct): JSX.Element => {
+  const [buttonCart, setButtonCart] = useState<boolean>(true);
 
-const [buttonCart, setButtonCart] = useState<boolean>(true);
-
-  
   function formatNumber(num: number) {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "USD"
-    }).format(num)
+      currency: "USD",
+    }).format(num);
   }
 
-  function handleAddProductCart() {
-    setButtonCart(false)
-    console.log("adiciona al carrito")
+  function handleAddProductCart(id: number) {
+    const newProducts = [...products];
+    const newProductscart = newProducts.filter((newProduct) =>
+      newProduct.id === id ? { ...newProduct } : ""
+    );    
+    console.log(newProductscart);
+    setButtonCart(false);
+    console.log("adiciona al carrito");
   }
 
   return (
@@ -28,9 +37,14 @@ const [buttonCart, setButtonCart] = useState<boolean>(true);
           <p>{formatNumber(price)} </p>
           <aside>
             {buttonCart ? (
-              <button onClick={handleAddProductCart}>Add To Cart</button>
+              <button onClick={() => handleAddProductCart(id)}>
+                Add To Cart
+              </button>
             ) : (
-              <button onClick={()=> setButtonCart(true)} className="button-addCart">
+              <button
+                onClick={() => setButtonCart(true)}
+                className="button-addCart"
+              >
                 <svg
                   width="22"
                   height="17"
@@ -53,4 +67,4 @@ const [buttonCart, setButtonCart] = useState<boolean>(true);
       </section>
     </>
   );
-}
+};

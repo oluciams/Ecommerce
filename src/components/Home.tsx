@@ -21,6 +21,7 @@ export interface PropsProduct {
   title: string;
   image: string;
   price: number;
+  products: Array<Product>;
 }
 
 export const Home = (): JSX.Element => {
@@ -53,31 +54,32 @@ export const Home = (): JSX.Element => {
                 title={title}
                 image={image}
                 price={price}
+                products={products}
               />
             ))}
           </div>
         </section>
         <section className="products-cart">
           <h1>Your Cart</h1>
-          {
-            productsCart ?
-              <p>Your cart is empty</p>
-              :
-              <section>
-                <div className="cards">
-                  {products.map(({ id, title, image, price }) => (
-                    <AddCart
+          {productsCart ? (
+            <p>Your cart is empty</p>
+          ) : (
+            <section>
+              <div className="cards">
+                {products.map(({ id, title, image, price }) => (
+                  <AddCart
                     key={id}
                     id={id}
                     title={title}
                     image={image}
                     price={price}
-                    />
-                    ))}
-                </div>
-                <TotalPriceCart/>
-              </section>
-          }
+                    products={products}
+                  />
+                ))}
+              </div>
+              <TotalPriceCart />
+            </section>
+          )}
         </section>
       </section>
     </>
