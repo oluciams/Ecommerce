@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { PropsProduct } from "./Home";
+import { useDispatch } from "react-redux";
+import { addProductCart } from "../redux/action/addProductCart";
 // export type FormatNumber = (num: number) => number;
 
 export const Card = ({
@@ -11,6 +13,13 @@ export const Card = ({
 }: PropsProduct): JSX.Element => {
   const [buttonCart, setButtonCart] = useState<boolean>(true);
 
+  const dispatch = useDispatch();
+
+  const addProduct = (product: any) => {
+    dispatch(addProductCart(product));
+
+  }
+
   function formatNumber(num: number) {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -18,15 +27,15 @@ export const Card = ({
     }).format(num);
   }
 
-  function handleAddProductCart(id: number) {
-    const newProducts = [...products];
-    const newProductscart = newProducts.filter((newProduct) =>
-      newProduct.id === id ? { ...newProduct } : ""
-    );    
-    console.log(newProductscart);
-    setButtonCart(false);
-    console.log("adiciona al carrito");
-  }
+  // function handleAddProductCart(id: number) {
+  //   const newProducts = [...products];
+  //   const newProductscart = newProducts.filter((newProduct) =>
+  //     newProduct.id === id ? { ...newProduct } : ""
+  //   );    
+  //   console.log(newProductscart);
+  //   setButtonCart(false);
+  //   console.log("adiciona al carrito");
+  // }
 
   return (
     <>
@@ -37,9 +46,9 @@ export const Card = ({
           <p>{formatNumber(price)} </p>
           <aside>
             {buttonCart ? (
-              <button onClick={() => handleAddProductCart(id)}>
-                Add To Cart
-              </button>
+              // <button onClick={() => handleAddProductCart(id)}>
+              // <button onClick={() => addProduct(products)}>Add To Cart</button>
+              <button onClick={() => addProduct(products)}>Add To Cart</button>
             ) : (
               <button
                 onClick={() => setButtonCart(true)}

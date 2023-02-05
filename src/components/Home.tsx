@@ -27,7 +27,7 @@ export interface PropsProduct {
 export const Home = (): JSX.Element => {
   
   const [products, setProducts] = useState<Array<Product>>([])
-  const [productsCart, setProductsCart] = useState<Array<Product>>([]);
+  // const [productsCart, setProductsCart] = useState<Array<Product>>([]);
   
   async function fetchApi(){
     const response = await fetch("https://fakestoreapi.com/products?limit=10");
@@ -43,6 +43,7 @@ export const Home = (): JSX.Element => {
 
   return (
     <>
+      <h1>eCommerce</h1>
       <section className="container">
         <section className="products">
           <h1>To Go Products</h1>
@@ -61,9 +62,10 @@ export const Home = (): JSX.Element => {
         </section>
         <section className="products-cart">
           <h1>Your Cart</h1>
-          {productsCart ? (
+          {/* {productsCart ? (
             <p>Your cart is empty</p>
-          ) : (
+          ) : ( */}
+              
             <section>
               <div className="cards">
                 {products.map(({ id, title, image, price }) => (
@@ -79,7 +81,7 @@ export const Home = (): JSX.Element => {
               </div>
               <TotalPriceCart />
             </section>
-          )}
+          {/* )} */}
         </section>
       </section>
     </>

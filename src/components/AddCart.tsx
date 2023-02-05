@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { PropsProduct } from "./Home";
+
 
 export const AddCart = ({ title, image, price }: PropsProduct): JSX.Element => {
 
   const [countProduct, setCountProduct] = useState<number>(1);
   const [totalPriceProduct, setTotalPriceProduct] = useState<number>(price);
+
+  const state = useSelector((state: any) => state.handleCart)
   
   function formatNumberCart(num: number) {
     return new Intl.NumberFormat("en-US", {
@@ -13,7 +17,7 @@ export const AddCart = ({ title, image, price }: PropsProduct): JSX.Element => {
     }).format(num);
   }
 
-  function addProduct() {
+  function addProduct(): void {
     if (countProduct < 0) {      
       return
     }
@@ -24,7 +28,7 @@ export const AddCart = ({ title, image, price }: PropsProduct): JSX.Element => {
     setTotalPriceProduct(PriceTotalProduct)
   }
 
-  function restProduct() {
+  function restProduct(): void {
     if (countProduct > 1) {
       const restProduct = countProduct - 1;
       let restPrice = totalPriceProduct;
@@ -40,7 +44,8 @@ export const AddCart = ({ title, image, price }: PropsProduct): JSX.Element => {
       <section className="cart">
         <figcaption>
           <img className="image-cart" src={image} alt={title} />
-          <p className="image-count">{countProduct}</p>
+          {/* <p className="image-count">{countProduct}</p> */}
+          <p className="image-count">{state}</p>
         </figcaption>
         <aside className="cart-body">
           <h5>{title.substring(0, 20)}</h5>
