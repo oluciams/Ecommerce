@@ -1,45 +1,34 @@
 import { useEffect, useState } from "react";
-import { AddCart } from "./AddCart";
+import { AddProductCart } from "./AddProductCart ";
 import { Card } from "./Card";
 import { TotalPriceCart } from "./TotalPriceCart";
+import { Product } from "../interface/Product";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux-store/store";
 
-export type Product = {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  }
-}
 
 export interface PropsProduct {
   id: number;
   title: string;
   image: string;
   price: number;
-  products: Array<Product>;
+  quantity?: number
 }
 
 export const Home = (): JSX.Element => {
-  
-  const [products, setProducts] = useState<Array<Product>>([])
-  // const [productsCart, setProductsCart] = useState<Array<Product>>([]);
-  
-  async function fetchApi(){
+  const [products, setProducts] = useState<Array<Product>>([]);
+
+  const productsCart = useSelector((state: RootState) => state.cart);
+
+  async function fetchApi() {
     const response = await fetch("https://fakestoreapi.com/products?limit=10");
     const data = await response.json();
     setProducts(data);
   }
 
-
-
- useEffect(() => {
-  fetchApi()
- }, []);
+  useEffect(() => {
+    fetchApi();
+  }, []);
 
   return (
     <>
@@ -55,33 +44,27 @@ export const Home = (): JSX.Element => {
                 title={title}
                 image={image}
                 price={price}
-                products={products}
               />
             ))}
           </div>
         </section>
         <section className="products-cart">
           <h1>Your Cart</h1>
-          {/* {productsCart ? (
-            <p>Your cart is empty</p>
-          ) : ( */}
-              
-            <section>
-              <div className="cards">
-                {products.map(({ id, title, image, price }) => (
-                  <AddCart
-                    key={id}
-                    id={id}
-                    title={title}
-                    image={image}
-                    price={price}
-                    products={products}
-                  />
-                ))}
-              </div>
-              <TotalPriceCart />
-            </section>
-          {/* )} */}
+          <section>
+            <div className="cards">
+              {productsCart.map(({ id, title, image, price, quantity }) => (
+                <AddProductCart
+                  key={id}
+                  id={id}
+                  title={title}
+                  image={image}
+                  price={price}
+                  quantity={quantity}
+                />
+              ))}
+            </div>
+            <TotalPriceCart />
+          </section>
         </section>
       </section>
     </>

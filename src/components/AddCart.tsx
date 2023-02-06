@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { PropsProduct } from "./Home";
 
 
@@ -8,8 +7,7 @@ export const AddCart = ({ title, image, price }: PropsProduct): JSX.Element => {
   const [countProduct, setCountProduct] = useState<number>(1);
   const [totalPriceProduct, setTotalPriceProduct] = useState<number>(price);
 
-  const state = useSelector((state: any) => state.handleCart)
-  
+    
   function formatNumberCart(num: number) {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -44,8 +42,8 @@ export const AddCart = ({ title, image, price }: PropsProduct): JSX.Element => {
       <section className="cart">
         <figcaption>
           <img className="image-cart" src={image} alt={title} />
-          {/* <p className="image-count">{countProduct}</p> */}
-          <p className="image-count">{state}</p>
+          <p className="image-count">{countProduct}</p>
+         
         </figcaption>
         <aside className="cart-body">
           <h5>{title.substring(0, 20)}</h5>
