@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { PropsProduct } from "./Home";
+// import { PropsProduct } from "./Home";
+import { PropsProduct } from "../types/app";
 
 
 export const AddCart = ({ title, image, price }: PropsProduct): JSX.Element => {

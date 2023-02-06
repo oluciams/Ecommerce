@@ -2,18 +2,20 @@ import { useEffect, useState } from "react";
 import { AddProductCart } from "./AddProductCart ";
 import { Card } from "./Card";
 import { TotalPriceCart } from "./TotalPriceCart";
-import { Product } from "../interface/Product";
+// import { Product } from "../interface/Product";
+import { Product } from "../types/app";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux-store/store";
+//import { PropsProduct } from "../types/app";
 
 
-export interface PropsProduct {
-  id: number;
-  title: string;
-  image: string;
-  price: number;
-  quantity?: number
-}
+// export interface PropsProduct {
+//   id: number;
+//   title: string;
+//   image: string;
+//   price: number;
+//   quantity?: number
+// }
 
 export const Home = (): JSX.Element => {
   const [products, setProducts] = useState<Array<Product>>([]);

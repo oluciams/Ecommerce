@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { add } from "../redux-store/reducer/slices/cartSlice";
-import { PropsProduct } from "./Home";
+//import { PropsProduct } from "./Home";
+import { PropsProduct } from "../types/app";
 
 
 export const Card = ({
