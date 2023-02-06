@@ -1,6 +1,10 @@
+import { useDispatch } from "react-redux";
+import { decreaseProductQuantity, increaseProductQuantity } from "../redux-store/reducer/slices/cartSlice";
 import { PropsProduct } from "../types/app";
 
-export const AddProductCart = ({ id, title, image, price, quantity }: PropsProduct): JSX.Element => {
+export const AddProductCart = ({id, title, image, price, quantity }: PropsProduct): JSX.Element => {
+
+  const dispatch = useDispatch()
 
   return (
     <>
@@ -13,9 +17,27 @@ export const AddProductCart = ({ id, title, image, price, quantity }: PropsProdu
           <h5>{title.substring(0, 20)}</h5>
           <p>{price}</p>
           <aside className="cart-total">
-            <button className="button-cart">-</button>
+            <button
+              onClick={() =>
+                dispatch(
+                  decreaseProductQuantity({ id, title, image, price, quantity })
+                )
+              }
+              className="button-cart"
+            >
+              -
+            </button>
             <small>{quantity}</small>
-            <button className="button-cart">+</button>
+            <button
+              onClick={() =>
+                dispatch(
+                  increaseProductQuantity({ id, title, image, price, quantity })
+                )
+              }
+              className="button-cart"
+            >
+              +
+            </button>
             <small>{price}</small>
           </aside>
         </aside>
