@@ -1,9 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "../../../interface/Product";
+import { ProductId } from "../../../types/app";
+//import { InitialStateCart } from "../../../types/app";
 
 
-// export const initialState: InitialStateCart = {
+// const initialState: InitialStateCart = {
 //   products: [],
+//   isActiveCart: false   
 // }
 
 const initialState: Product[] = []
@@ -12,6 +15,11 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+
+    changeButton: (state: any) => {
+      state.isActiveCart = true
+    },
+
     add: (state: any, action: PayloadAction<Product>) => {
       const itemExists = state.find(
         (item: Product) => item.id === action.payload.id
@@ -27,7 +35,11 @@ export const cartSlice = createSlice({
       return [...state, { ...action.payload, quantity: 1 }];
     },
 
-    increaseProductQuantity: (state: any, action: PayloadAction<Product>) => {
+    remove: (state: any, action: PayloadAction<Product>) => {
+      return state.filter((item:any) => item.id !== action.payload.id )
+    },
+
+    increaseProductQuantity: (state: any, action: PayloadAction<ProductId>) => {
       return state.map((item: Product) =>
         item.id === action.payload.id
           ? { ...item, quantity: (item.quantity as number) + 1 }
@@ -35,7 +47,7 @@ export const cartSlice = createSlice({
       );
     },
 
-    decreaseProductQuantity: (state: any, action: PayloadAction<Product>) => {
+    decreaseProductQuantity: (state: any, action: PayloadAction<ProductId>) => {
       return state.map((item: Product) =>
         item.id === action.payload.id
           ? { ...item, quantity: (item.quantity as number) - 1 }
@@ -46,7 +58,9 @@ export const cartSlice = createSlice({
 });
 
 export const {
+  changeButton,
   add,
+  remove,
   increaseProductQuantity,
   decreaseProductQuantity,  
 } = cartSlice.actions;

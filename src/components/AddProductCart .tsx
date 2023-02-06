@@ -20,7 +20,7 @@ export const AddProductCart = ({id, title, image, price, quantity }: PropsProduc
             <button
               onClick={() =>
                 dispatch(
-                  decreaseProductQuantity({ id, title, image, price, quantity })
+                  decreaseProductQuantity({ id })
                 )
               }
               className="button-cart"
@@ -31,7 +31,7 @@ export const AddProductCart = ({id, title, image, price, quantity }: PropsProduc
             <button
               onClick={() =>
                 dispatch(
-                  increaseProductQuantity({ id, title, image, price, quantity })
+                  increaseProductQuantity({ id })
                 )
               }
               className="button-cart"

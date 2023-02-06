@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { add } from "../redux-store/reducer/slices/cartSlice";
+import { add, remove } from "../redux-store/reducer/slices/cartSlice";
 //import { PropsProduct } from "./Home";
 import { PropsProduct } from "../types/app";
 
@@ -41,7 +41,7 @@ export const Card = ({
               </button>
             ) : (
               <button
-                onClick={() => setButtonCart(true)}
+                onClick={() => dispatch(remove({ id, title, price, image }))}
                 className="button-addCart"
               >
                 <svg

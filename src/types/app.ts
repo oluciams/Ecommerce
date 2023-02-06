@@ -20,3 +20,11 @@ export interface PropsProduct {
   quantity?: number;
 }
 
+export interface InitialStateCart {
+  products: [],
+  isActiveCart: boolean   
+}
+
+export type ProductId =  {
+  id: number
+}
