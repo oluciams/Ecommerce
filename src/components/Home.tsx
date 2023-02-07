@@ -42,21 +42,25 @@ export const Home = (): JSX.Element => {
         </section>
         <section className="products-cart">
           <h1>Your Cart</h1>
-          <section>
-            <div className="cards">
-              {productsCart.map(({ id, title, image, price, quantity }) => (
-                <AddProductCart
-                  key={id}
-                  id={id}
-                  title={title}
-                  image={image}
-                  price={price}
-                  quantity={quantity}
-                />
-              ))}
-            </div>
+          {productsCart.length > 0 ? 
+            <section>
+              <div className="cards">
+                {productsCart.map(({ id, title, image, price, quantity }) => (
+                  <AddProductCart
+                    key={id}
+                    id={id}
+                    title={title}
+                    image={image}
+                    price={price}
+                    quantity={quantity}
+                  />
+                ))}
+              </div>
             <TotalPriceCart />
-          </section>
+            </section>
+           : 
+            <p>Your cart is empty</p>
+          }
         </section>
       </section>
     </>

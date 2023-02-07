@@ -34,18 +34,19 @@ export const Card = ({
           <p>{formatNumber(price)} </p>
           <aside>
             {buttonCart ? (
-                <button
-                  onClick={() =>
-                    changeButton({ id, title, price, image }, "add")}
-                >
-                  Add To Cart
-                </button>
+              <button
+                onClick={() => changeButton({ id, title, price, image }, "add")}
+              >
+                Add To Cart
+              </button>
             ) : (
               <button
-                onClick={() => changeButton({ id, title, price, image }, "remove")}
+                onClick={() =>
+                  changeButton({ id, title, price, image }, "remove")
+                }
                 className="button-addCart"
-              >
-                <svg
+                >
+                  <svg
                   width="22"
                   height="17"
                   viewBox="0 0 22 17"
