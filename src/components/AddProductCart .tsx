@@ -18,22 +18,15 @@ export const AddProductCart = ({id, title, image, price, quantity }: PropsProduc
           <p>{price}</p>
           <aside className="cart-total">
             <button
-              onClick={() =>
-                dispatch(
-                  decreaseProductQuantity({ id })
-                )
-              }
+              onClick={() => dispatch(decreaseProductQuantity({ id }))}
               className="button-cart"
+              disabled={(quantity as number) <= 1}
             >
               -
             </button>
             <small>{quantity}</small>
             <button
-              onClick={() =>
-                dispatch(
-                  increaseProductQuantity({ id })
-                )
-              }
+              onClick={() => dispatch(increaseProductQuantity({ id }))}
               className="button-cart"
             >
               +

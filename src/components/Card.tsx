@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { add, remove } from "../redux-store/reducer/slices/cartSlice";
-//import { PropsProduct } from "./Home";
-import { PropsProduct } from "../types/app";
+import {Product,  PropsProduct } from "../types/app";
 
 
 export const Card = ({
@@ -15,6 +14,15 @@ export const Card = ({
   const [buttonCart, setButtonCart] = useState<boolean>(true);
 
   const dispatch = useDispatch()
+
+  const changeButton = ({ id, title, price, image }: Product, actionType: string) => {
+    actionType === "add" ?
+      dispatch(add({ id, title, price, image }))
+      :
+      dispatch(remove({ id, title, price, image }))
+    
+    setButtonCart(!buttonCart);
+  };
   
 
   function formatNumber(num: number) {
@@ -34,14 +42,15 @@ export const Card = ({
           <p>{formatNumber(price)} </p>
           <aside>
             {buttonCart ? (
-              <button
-                onClick={() => dispatch(add({ id, title, price, image }))}
-              >
-                Add To Cart
-              </button>
+                <button
+                  onClick={() =>
+                    changeButton({ id, title, price, image }, "add")}
+                >
+                  Add To Cart
+                </button>
             ) : (
               <button
-                onClick={() => dispatch(remove({ id, title, price, image }))}
+                onClick={() => changeButton({ id, title, price, image }, "remove")}
                 className="button-addCart"
               >
                 <svg
