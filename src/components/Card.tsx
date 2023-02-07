@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { add, remove } from "../redux-store/reducer/slices/cartSlice";
 import {Product,  PropsProduct } from "../types/app";
+import { formatNumber } from "../utils/formatNumber";
 
 
 export const Card = ({
@@ -23,15 +24,6 @@ export const Card = ({
     
     setButtonCart(!buttonCart);
   };
-  
-
-  function formatNumber(num: number) {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(num);
-  }
-
 
   return (
     <>

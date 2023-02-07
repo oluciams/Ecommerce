@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { decreaseProductQuantity, increaseProductQuantity } from "../redux-store/reducer/slices/cartSlice";
 import { PropsProduct } from "../types/app";
+import { formatNumber } from "../utils/formatNumber";
 
 export const AddProductCart = ({id, title, image, price, quantity }: PropsProduct): JSX.Element => {
 
@@ -15,7 +16,7 @@ export const AddProductCart = ({id, title, image, price, quantity }: PropsProduc
         </figcaption>
         <aside className="cart-body">
           <h5>{title.substring(0, 20)}</h5>
-          <p>{price}</p>
+          <p>{formatNumber(price)}</p>
           <aside className="cart-total">
             <button
               onClick={() => dispatch(decreaseProductQuantity({ id }))}
@@ -31,7 +32,7 @@ export const AddProductCart = ({id, title, image, price, quantity }: PropsProduc
             >
               +
             </button>
-            <small>{price}</small>
+            <small>{formatNumber(price)}</small>
           </aside>
         </aside>
       </section>
