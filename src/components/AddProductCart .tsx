@@ -3,9 +3,16 @@ import { decreaseProductQuantity, increaseProductQuantity } from "../redux-store
 import { PropsProduct } from "../types/app";
 import { formatNumber } from "../utils/formatNumber";
 
-export const AddProductCart = ({id, title, image, price, quantity }: PropsProduct): JSX.Element => {
-
-  const dispatch = useDispatch()
+export const AddProductCart = ({
+  id,
+  title,
+  image,
+  price,
+  quantity,
+  totalPrice,
+}: PropsProduct): JSX.Element => {
+  
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -32,7 +39,7 @@ export const AddProductCart = ({id, title, image, price, quantity }: PropsProduc
             >
               +
             </button>
-            <small>{formatNumber(price)}</small>
+            <small>{formatNumber(totalPrice as number)}</small>
           </aside>
         </aside>
       </section>

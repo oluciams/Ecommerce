@@ -10,6 +10,7 @@ export interface Product {
     count: number;
   };
   quantity?: number;
+  totalPrice?: number
 }
 
 export interface PropsProduct {
@@ -18,8 +19,9 @@ export interface PropsProduct {
   image: string;
   price: number;
   quantity?: number;
+  totalPrice?: number
 }
 
-export type ProductId =  {
-  id: number
-}
+export type ProductId = {
+  id: number; 
+};
