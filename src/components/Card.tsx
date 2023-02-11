@@ -34,11 +34,14 @@ export const Card = ({
           <p>{formatNumber(price)} </p>
           <aside>
             {buttonCart ? (
+              <>
               <button
                 onClick={() => changeButton({ id, title, price, image }, "add")}
               >
                 Add To Cart
               </button>
+              
+              </>
             ) : (
               <button
                 onClick={() =>

@@ -8,19 +8,42 @@ import { RootState } from "../redux-store/store";
 
 
 export const Home = (): JSX.Element => {
-  const [products, setProducts] = useState<Array<Product>>([]);
+  const [products, setProducts] = useState<Array<Product>>([
+    {
+      id: 1,
+      title: "Samsung Galaxy S7",
+      price: 700.0,
+      image: "https://res.cloudinary.com/drecbsopp/image/upload/v1627398399/samasung-galaxy-a51-8gb-8uh_tndbgv.jpg",
+      
+    },
+    {
+      id: 2,
+      title: "Moto G5 Plus",
+      price: 600.0,
+      image: "https://res.cloudinary.com/drecbsopp/image/upload/v1627398477/MotoGPowerDual_2021_Reformatted_1_330x_wp8gve.png",
+     
+    },
+  ]);
 
-  const productsCart = useSelector((state: RootState) => state.cart); 
+  // const productsCart = useSelector((state: RootState) => state.cart); 
+  const { items } = useSelector((state: RootState) => state.cart); 
+  
+  // const productsCart = items
+  console.log(items)
 
-  async function fetchApi() {
-    const response = await fetch("https://fakestoreapi.com/products?limit=10");
-    const data = await response.json();
-    setProducts(data);
-  }
+  // async function fetchApi() {
+  //   const response = await fetch("https://fakestoreapi.com/products?limit=10");
+  //   const data = await response.json();
+  //   setProducts(data);
+  // }
+
+  // useEffect(() => {
+  //   fetchApi();
+  // }, []);
 
   useEffect(() => {
-    fetchApi();
-  }, []);
+    
+  }, [items]);
 
   return (
     <>
@@ -42,10 +65,12 @@ export const Home = (): JSX.Element => {
         </section>
         <section className="products-cart">
           <h1>Your Cart</h1>
-          {productsCart?.length > 0 ? (
+          {/* {productsCart?.length > 0 ? ( */}
+          {items?.length > 0 ? (
             <section>
               <div className="cards">
-                {productsCart.map(
+                {/* {productsCart.map( */}
+                {items.map(
                   ({ id, title, image, price, quantity, totalPrice }) => (
                     <AddProductCart
                       key={id}

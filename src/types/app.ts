@@ -10,7 +10,8 @@ export interface Product {
     count: number;
   };
   quantity?: number;
-  totalPrice?: number
+  totalPrice?: number;
+  subtotalPriceCart?: number;
 }
 
 export interface PropsProduct {
