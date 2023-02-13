@@ -3,8 +3,9 @@ import { AddProductCart } from "./AddProductCart ";
 import { Card } from "./Card";
 import { TotalPriceCart } from "./TotalPriceCart";
 import { Product } from "../types/app";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux-store/store";
+import { getSubtotalPrice } from "../redux-store/reducer/slices/cartSlice";
 
 
 export const Home = (): JSX.Element => {
@@ -26,10 +27,11 @@ export const Home = (): JSX.Element => {
   ]);
 
   // const productsCart = useSelector((state: RootState) => state.cart); 
-  const { items } = useSelector((state: RootState) => state.cart); 
-  
-  // const productsCart = items
-  console.log(items)
+
+  const { items } = useSelector((state: RootState) => state.cart);  
+  const dispatch = useDispatch()
+
+ 
 
   // async function fetchApi() {
   //   const response = await fetch("https://fakestoreapi.com/products?limit=10");
@@ -42,6 +44,9 @@ export const Home = (): JSX.Element => {
   // }, []);
 
   useEffect(() => {
+    if (items.length > 0) {
+      dispatch(getSubtotalPrice());
+    }
     
   }, [items]);
 

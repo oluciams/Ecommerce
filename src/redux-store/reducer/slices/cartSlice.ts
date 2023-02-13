@@ -44,6 +44,16 @@ export const cartSlice = createSlice({
     remove: (state: any, action: PayloadAction<Product>) => {
       state.items = state.items.filter((item: any) => item.id !== action.payload.id);
     },
+
+    getSubtotalPrice: (state: any) => {
+      const sumSubtotal = state.items;
+      const sum = sumSubtotal.reduce(
+        (sumPrice: number, cartItem:any) => {
+          return sumPrice + cartItem.totalPrice
+        }, 0);
+      console.log(sum)
+      state.subtotalPriceCart = sum
+    },
   },
 });
 
@@ -52,6 +62,7 @@ export const {
   remove,
   increaseProductQuantity,
   decreaseProductQuantity,
+  getSubtotalPrice,
 } = cartSlice.actions;
 
 export default cartSlice.reducer
