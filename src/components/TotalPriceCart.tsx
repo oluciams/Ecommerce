@@ -9,11 +9,12 @@ export const TotalPriceCart = (): JSX.Element => {
   return (
     <>
       <section className="total-price-cart">
-        <p className="total-price-body">Subtotal: { formatNumber(subtotalPriceCart) }</p>
-        <p className="total-price-body">Tax: { formatNumber(tax) }</p>
-        <p className="total-price-body">
-          Total: <small className="total-price">{ formatNumber(totalCart) }</small>
-        </p>
+        <p> Subtotal:</p>
+        <small>{formatNumber(subtotalPriceCart)}</small>
+        <p>Tax:</p>
+        <small>{formatNumber(tax)}</small>
+        <p>Total:</p>
+        <small className="total-price">{formatNumber(totalCart)}</small>
       </section>
     </>
   );

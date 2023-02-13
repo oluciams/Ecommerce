@@ -109,7 +109,7 @@ button {
   display: flex;
   justify-content: center;
   margin: 0.5rem;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #6B00F5;
   padding: 0.8rem; 
 }
 
@@ -149,20 +149,15 @@ button {
 
 .total-price-cart {
   text-align: end;
-  margin: 1rem; 
-  margin-top: 1rem; 
-  font-size: 1.3rem;
-
-}
-
-.total-price-body {
-  padding: 1rem;
-
+  margin: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: 65% 35%;
+  grid-auto-rows: 2.2rem;
 }
 
 .total-price {
   color: #6B00F5;
-  font-size: 1.3rem;
-
 }
 
