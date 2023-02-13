@@ -6,6 +6,8 @@ export const cartSlice = createSlice({
   initialState: {
     items: [],
     subtotalPriceCart: 0,
+    tax: 0,
+    totalCart: 0
   },
   reducers: {
     add: (state: any, action: PayloadAction<Product>) => {
@@ -47,12 +49,19 @@ export const cartSlice = createSlice({
 
     getSubtotalPrice: (state: any) => {
       const sumSubtotal = state.items;
+      const tax = 0.0975;
+
       const sum = sumSubtotal.reduce(
         (sumPrice: number, cartItem:any) => {
           return sumPrice + cartItem.totalPrice
         }, 0);
-      console.log(sum)
+      
+      const totalTax = sum * tax;
+      const totalCart = sum + totalTax;
+      
       state.subtotalPriceCart = sum
+      state.tax = totalTax
+      state.totalCart = totalCart
     },
   },
 });
