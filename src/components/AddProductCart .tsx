@@ -40,7 +40,7 @@ export const AddProductCart = ({
             >
               +
             </button>
-            <small>{formatNumber(totalPrice as number)}</small>
+            <small className={styles["increase-price"]}>{formatNumber(totalPrice as number)}</small>
           </aside>
         </aside>
       </section>
