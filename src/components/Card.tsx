@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { add, remove } from "../redux-store/reducer/slices/cartSlice";
 import {Product,  PropsProduct } from "../types/app";
 import { formatNumber } from "../utils/formatNumber";
+import styles from "../styles.module.css";
 
 
 export const Card = ({
@@ -27,9 +28,9 @@ export const Card = ({
 
   return (
     <>
-      <section key={id} className="card">
+      <section key={id} className={styles["card"]}>
         <img src={image} alt={title} />
-        <aside className="card-body">
+        <aside className={styles["card-body"]}>
           <h5>{title.substring(0, 20)}</h5>
           <p>{formatNumber(price)} </p>
           <aside>
@@ -44,10 +45,10 @@ export const Card = ({
               </>
             ) : (
               <button
-                onClick={() =>
-                  changeButton({ id, title, price, image }, "remove")
-                }
-                className="button-addCart"
+                  onClick={() =>
+                    changeButton({ id, title, price, image }, "remove")
+                  }
+                  className={styles["button-addCart"]}
                 >
                   <svg
                   width="22"

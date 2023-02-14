@@ -6,6 +6,7 @@ import { Product } from "../types/app";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux-store/store";
 import { getSubtotalPrice } from "../redux-store/reducer/slices/cartSlice";
+import styles from "../styles.module.css";
 
 
 export const Home = (): JSX.Element => {
@@ -36,10 +37,10 @@ export const Home = (): JSX.Element => {
   return (
     <>
       <h1>eCommerce</h1>
-      <section className="container">
-        <section className="products">
+      <section className={styles["container"]}>
+        <section className={styles["products"]}>
           <h1>To Go Products</h1>
-          <div className="cards">
+          <div className={styles["cards"]}>
             {products.map(({ id, title, image, price }) => (
               <Card
                 key={id}
@@ -51,11 +52,11 @@ export const Home = (): JSX.Element => {
             ))}
           </div>
         </section>
-        <section className="products-cart">
+        <section className={styles["products-cart"]}>
           <h1>Your Cart</h1>
           {items?.length > 0 ? (
             <section>
-              <div className="cards">
+              <div className={styles["cards"]}>
                 {items.map(
                   ({ id, title, image, price, quantity, totalPrice }) => (
                     <AddProductCart
