@@ -20,7 +20,7 @@ export const Card = ({
   const toggleSelect = (id: number) => {
     const newProducts = products.map((product) => {
       if (product.id === id) {
-        return { ...product, selected: !product.selected};
+        return { ...product, selected: !product.selected };
       }
       return product;
     });
