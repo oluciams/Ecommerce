@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { add, remove } from "../redux-store/reducer/slices/cartSlice";
-import {Product,  PropsProduct } from "../types/app";
+import { Product, PropsProductCard } from "../types/app";
 import { formatNumber } from "../utils/formatNumber";
 import styles from "../styles.module.css";
 
@@ -10,20 +9,34 @@ export const Card = ({
   id,
   title,
   image,
-  price,  
-}: PropsProduct): JSX.Element => {
+  price,
+  selected,
+  products,
+  setProducts,
+}: PropsProductCard): JSX.Element => {
 
-  const [buttonCart, setButtonCart] = useState<boolean>(true);
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
+  const toggleSelect = (id: number) => {
+    const newProducts = products.map((product) => {
+      if (product.id === id) {
+        return { ...product, selected: !product.selected};
+      }
+      return product;
+    });
 
-  const changeButton = ({ id, title, price, image }: Product, actionType: string) => {
-    actionType === "add" ?
-      dispatch(add({ id, title, price, image }))
-      :
-      dispatch(remove({ id, title, price, image }))
-    
-    setButtonCart(!buttonCart);
+    setProducts(newProducts);
+  };
+
+  const changeButton = (
+    { id, title, price, image }: Product,
+    actionType: string
+  ) => {
+    actionType === "add"
+      ? dispatch(add({ id, title, price, image }))
+      : dispatch(remove({ id, title, price, image }));
+
+    toggleSelect(id);
   };
 
   return (
@@ -34,23 +47,14 @@ export const Card = ({
           <h5>{title.substring(0, 20)}</h5>
           <p>{formatNumber(price)} </p>
           <aside>
-            {buttonCart ? (
-              <>
+            {selected ? (
               <button
-                onClick={() => changeButton({ id, title, price, image }, "add")}
+                onClick={() =>
+                  changeButton({ id, title, price, image }, "remove")
+                }
+                className={styles["button-addCart"]}
               >
-                Add To Cart
-              </button>
-              
-              </>
-            ) : (
-              <button
-                  onClick={() =>
-                    changeButton({ id, title, price, image }, "remove")
-                  }
-                  className={styles["button-addCart"]}
-                >
-                  <svg
+                <svg
                   width="22"
                   height="17"
                   viewBox="0 0 22 17"
@@ -66,6 +70,16 @@ export const Card = ({
                 </svg>
                 In Cart
               </button>
+            ) : (
+              <>
+                <button
+                  onClick={() =>
+                    changeButton({ id, title, price, image }, "add")
+                  }
+                >
+                  Add To Cart
+                </button>
+              </>
             )}
           </aside>
         </aside>

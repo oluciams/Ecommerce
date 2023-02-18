@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { decreaseProductQuantity, increaseProductQuantity } from "../redux-store/reducer/slices/cartSlice";
+import { decreaseProductQuantity, increaseProductQuantity, remove } from "../redux-store/reducer/slices/cartSlice";
 import { PropsProduct } from "../types/app";
 import { formatNumber } from "../utils/formatNumber";
 import styles from "../styles.module.css";
@@ -25,6 +25,7 @@ export const AddProductCart = ({
         <aside className={styles["cart-body"]}>
           <h5>{title.substring(0, 20)}</h5>
           <p>{formatNumber(price)}</p>
+
           <aside className={styles["cart-total"]}>
             <button
               onClick={() => dispatch(decreaseProductQuantity({ id }))}
@@ -40,9 +41,28 @@ export const AddProductCart = ({
             >
               +
             </button>
-            <small className={styles["increase-price"]}>{formatNumber(totalPrice as number)}</small>
+            <small className={styles["increase-price"]}>
+              {formatNumber(totalPrice as number)}
+            </small>
           </aside>
         </aside>
+        <button onClick={() => dispatch(remove({id, title, price, image}))} className={styles["trash"]}>
+          <svg
+            width="25px"
+            height="25px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 10V16M14 10V16M18 6V18C18 19.1046 17.1046 20 16 20H8C6.89543 20 6 19.1046 6 18V6M4 6H20M15 6V5C15 3.89543 14.1046 3 13 3H11C9.89543 3 9 3.89543 9 5V6"
+              stroke="#000000"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
       </section>
     </>
   );

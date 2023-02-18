@@ -19,7 +19,12 @@ export const Home = (): JSX.Element => {
   async function fetchApi() {
     const response = await fetch("https://fakestoreapi.com/products?limit=10");
     const data = await response.json();
-    setProducts(data);
+    const newProducts = data.map((product: Product) => ({
+      ...product,
+      selected: false,
+    }));
+    
+    setProducts(newProducts);
   }
 
   useEffect(() => {
@@ -41,13 +46,16 @@ export const Home = (): JSX.Element => {
         <section className={styles["products"]}>
           <h1>To Go Products</h1>
           <div className={styles["cards"]}>
-            {products.map(({ id, title, image, price }) => (
+            {products.map(({ id, title, image, price, selected }) => (
               <Card
                 key={id}
                 id={id}
                 title={title}
                 image={image}
                 price={price}
+                selected={selected}
+                products={products}
+                setProducts={setProducts}
               />
             ))}
           </div>

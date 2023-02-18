@@ -13,7 +13,7 @@ export const cartSlice = createSlice({
     add: (state: any, action: PayloadAction<Product>) => {
       state.items = [
         ...state.items,
-        { ...action.payload, quantity: 1, totalPrice: action.payload.price },
+        { ...action.payload, quantity: 1, totalPrice: action.payload.price},
       ];
     },
 

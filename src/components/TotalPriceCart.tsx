@@ -15,7 +15,9 @@ export const TotalPriceCart = (): JSX.Element => {
         <p>Tax:</p>
         <small>{formatNumber(tax)}</small>
         <p>Total:</p>
-        <small className={styles["total-price"]}>{formatNumber(totalCart)}</small>
+        <small className={styles["total-price"]}>
+          {formatNumber(totalCart)}
+        </small>
       </section>
     </>
   );

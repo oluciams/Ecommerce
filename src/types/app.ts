@@ -5,6 +5,7 @@ export interface Product {
   description?: string;
   category?: string;
   image: string;
+  selected?: boolean
   rating?: {
     rate: number;
     count: number;
@@ -19,8 +20,15 @@ export interface PropsProduct {
   title: string;
   image: string;
   price: number;
+  selected?: boolean
   quantity?: number;
   totalPrice?: number
+ 
+}
+
+export interface PropsProductCard extends PropsProduct { 
+  products: Product[];
+  setProducts: Function;
 }
 
 export type ProductId = {
