@@ -1,3 +1,6 @@
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../redux-store/store";
+
 export interface Product {
   id: number;
   title: string;
@@ -34,3 +37,7 @@ export interface PropsProductCard extends PropsProduct {
 export type ProductId = {
   id: number; 
 };
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector 
+

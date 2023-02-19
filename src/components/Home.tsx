@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux-store/store";
 import { getSubtotalPrice } from "../redux-store/reducer/slices/cartSlice";
 import styles from "../styles.module.css";
+import { getProducts } from "../redux-store/reducer/slices/productsSlice";
 
 
 export const Home = (): JSX.Element => {
@@ -25,8 +26,10 @@ export const Home = (): JSX.Element => {
     }));
     
     setProducts(newProducts);
+    dispatch(getProducts(newProducts))
   }
 
+ 
   useEffect(() => {
     fetchApi();
   }, []);

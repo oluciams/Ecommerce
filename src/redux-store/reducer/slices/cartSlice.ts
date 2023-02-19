@@ -10,7 +10,7 @@ export const cartSlice = createSlice({
     totalCart: 0
   },
   reducers: {
-    add: (state: any, action: PayloadAction<Product>) => {
+    add: (state: any, action: PayloadAction<Product>) => {      
       state.items = [
         ...state.items,
         { ...action.payload, quantity: 1, totalPrice: action.payload.price},
