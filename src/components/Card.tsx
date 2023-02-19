@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { add, remove } from "../redux-store/reducer/slices/cartSlice";
+import { add } from "../redux-store/reducer/slices/cartSlice";
 import { Product, PropsProduct } from "../types/app";
 import { formatNumber } from "../utils/formatNumber";
 import styles from "../styles.module.css";
 import { RootState } from "../redux-store/store";
 import { getProducts } from "../redux-store/reducer/slices/productsSlice";
+import { toggleSelect } from "../utils/toggleSelect";
 
 
 export const Card = ({
@@ -19,25 +20,11 @@ export const Card = ({
 
   const dispatch = useDispatch();
 
-  const toggleSelect = (id: number) => {
-    const newProducts = products.map((product) => {
-      if (product.id === id) {
-        return { ...product, selected: !product.selected };
-      }
-      return product;
-    });
+  const changeButton = ({ id, title, price, image }: Product) => {
+    
+    dispatch(add({ id, title, price, image }));
+    const newProducts = toggleSelect(id, products);
     dispatch(getProducts(newProducts));
-  };
-
-  const changeButton = (
-    { id, title, price, image }: Product,
-    actionType: string
-  ) => {
-    actionType === "add"
-      ? dispatch(add({ id, title, price, image }))
-      : dispatch(remove({ id, title, price, image }));
-
-    toggleSelect(id);
   };
 
   return (
@@ -49,12 +36,7 @@ export const Card = ({
           <p>{formatNumber(price)} </p>
           <aside>
             {selected ? (
-              <button
-                onClick={() =>
-                  changeButton({ id, title, price, image }, "remove")
-                }
-                className={styles["button-addCart"]}
-              >
+              <button className={styles["button-addCart"]}>
                 <svg
                   width="22"
                   height="17"
@@ -75,7 +57,7 @@ export const Card = ({
               <>
                 <button
                   onClick={() =>
-                    changeButton({ id, title, price, image }, "add")
+                    changeButton({ id, title, price, image })
                   }
                 >
                   Add To Cart

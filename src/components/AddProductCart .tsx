@@ -1,8 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { decreaseProductQuantity, increaseProductQuantity, remove } from "../redux-store/reducer/slices/cartSlice";
-import { PropsProduct } from "../types/app";
+import { Product, PropsProduct } from "../types/app";
 import { formatNumber } from "../utils/formatNumber";
 import styles from "../styles.module.css";
+import { toggleSelect } from "../utils/toggleSelect";
+import { getProducts } from "../redux-store/reducer/slices/productsSlice";
+import { RootState } from "../redux-store/store";
 
 export const AddProductCart = ({
   id,
@@ -12,8 +15,15 @@ export const AddProductCart = ({
   quantity,
   totalPrice,
 }: PropsProduct): JSX.Element => {
-  
+
+  const { products } = useSelector((state: RootState) => state.products);
   const dispatch = useDispatch();
+
+  const deleteProduct = ({ id, title, price, image }: Product) => {
+    dispatch(remove({ id, title, price, image }));
+    const newProducts = toggleSelect(id, products);
+    dispatch(getProducts(newProducts));
+  };
 
   return (
     <>
@@ -46,7 +56,10 @@ export const AddProductCart = ({
             </small>
           </aside>
         </aside>
-        <button onClick={() => dispatch(remove({id, title, price, image}))} className={styles["trash"]}>
+        <button
+          onClick={() => deleteProduct({ id, title, price, image })}
+          className={styles["trash"]}
+        >
           <svg
             width="25px"
             height="25px"
