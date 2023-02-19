@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { decreaseProductQuantity, increaseProductQuantity, remove } from "../redux-store/reducer/slices/cartSlice";
-import { Product, PropsProduct } from "../types/app";
+import { ProductId, PropsProduct } from "../types/app";
 import { formatNumber } from "../utils/formatNumber";
 import styles from "../styles.module.css";
 import { toggleSelect } from "../utils/toggleSelect";
@@ -19,8 +19,9 @@ export const AddProductCart = ({
   const { products } = useSelector((state: RootState) => state.products);
   const dispatch = useDispatch();
 
-  const deleteProduct = ({ id, title, price, image }: Product) => {
-    dispatch(remove({ id, title, price, image }));
+  const deleteProduct = ({ id }: ProductId) => {
+
+    dispatch(remove({ id }));
     const newProducts = toggleSelect(id, products);
     dispatch(getProducts(newProducts));
   };
@@ -57,7 +58,7 @@ export const AddProductCart = ({
           </aside>
         </aside>
         <button
-          onClick={() => deleteProduct({ id, title, price, image })}
+          onClick={() => deleteProduct({ id })}
           className={styles["trash"]}
         >
           <svg
