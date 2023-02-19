@@ -1,8 +1,10 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { add, remove } from "../redux-store/reducer/slices/cartSlice";
-import { Product, PropsProductCard } from "../types/app";
+import { Product, PropsProduct } from "../types/app";
 import { formatNumber } from "../utils/formatNumber";
 import styles from "../styles.module.css";
+import { RootState } from "../redux-store/store";
+import { getProducts } from "../redux-store/reducer/slices/productsSlice";
 
 
 export const Card = ({
@@ -10,10 +12,10 @@ export const Card = ({
   title,
   image,
   price,
-  selected,
-  products,
-  setProducts,
-}: PropsProductCard): JSX.Element => {
+  selected 
+}: PropsProduct): JSX.Element => {
+
+  const { products } = useSelector((state: RootState) => state.products);
 
   const dispatch = useDispatch();
 
@@ -24,8 +26,7 @@ export const Card = ({
       }
       return product;
     });
-
-    setProducts(newProducts);
+    dispatch(getProducts(newProducts));
   };
 
   const changeButton = (

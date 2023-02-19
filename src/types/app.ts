@@ -25,13 +25,7 @@ export interface PropsProduct {
   price: number;
   selected?: boolean
   quantity?: number;
-  totalPrice?: number
- 
-}
-
-export interface PropsProductCard extends PropsProduct { 
-  products: Product[];
-  setProducts: Function;
+  totalPrice?: number 
 }
 
 export type ProductId = {

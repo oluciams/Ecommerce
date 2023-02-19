@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { AddProductCart } from "./AddProductCart ";
 import { Card } from "./Card";
 import { TotalPriceCart } from "./TotalPriceCart";
@@ -12,9 +12,9 @@ import { getProducts } from "../redux-store/reducer/slices/productsSlice";
 
 export const Home = (): JSX.Element => {
 
-  const [products, setProducts] = useState<Array<Product>>([]);
-
   const { items } = useSelector((state: RootState) => state.cart);
+  const { products } = useSelector((state: RootState) => state.products);
+
   const dispatch = useDispatch(); 
 
   async function fetchApi() {
@@ -25,13 +25,13 @@ export const Home = (): JSX.Element => {
       selected: false,
     }));
     
-    setProducts(newProducts);
     dispatch(getProducts(newProducts))
   }
 
  
   useEffect(() => {
     fetchApi();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -57,8 +57,6 @@ export const Home = (): JSX.Element => {
                 image={image}
                 price={price}
                 selected={selected}
-                products={products}
-                setProducts={setProducts}
               />
             ))}
           </div>
