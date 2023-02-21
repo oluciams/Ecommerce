@@ -1,6 +1,29 @@
+# Basic Ecommerce Shopping Cart with Redux Toolkit
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+Link to Web App
+The web app has been deployed to Netlify, and can be accessed [here] ().
+
+## Features
+
+The following are some of the features of this project:
+
+- Uses Redux Toolkit for state management
+- Completely typed with Typescript
+- Styles with CSS Modules
+- Responsive design with CSS media queries
+
+## Learning Outcomes
+
+The following are some of the learning outcomes of this project:
+
+- Building a web app basic Ecommerce with React.
+- Using Typescript to develop a typed web app.
+- I learned Redux with Redux-Toolkit and how is the interaction between their data and elements
 
 ## Available Scripts
 
