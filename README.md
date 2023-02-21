@@ -1,12 +1,12 @@
-# Basic Ecommerce Shopping Cart with Redux Toolkit
+## Basic Ecommerce Shopping Cart with Redux Toolkit
 
-# Getting Started with Create React App
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
 Link to Web App
-The web app has been deployed to Netlify, and can be accessed [here] ().
+The web app has been deployed to Netlify, and can be accessed [here]().
 
 ## Features
 
