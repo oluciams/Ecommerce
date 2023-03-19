@@ -1,7 +1,5 @@
 import { useEffect } from "react";
-import { AddProductCart } from "./AddProductCart ";
 import { Card } from "./Card";
-import { TotalPriceCart } from "./TotalPriceCart";
 import { Product } from "../types/app";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux-store/store";
@@ -9,8 +7,7 @@ import { getSubtotalPrice } from "../redux-store/reducer/slices/cartSlice";
 import styles from "../styles.module.css";
 import { getProducts } from "../redux-store/reducer/slices/productsSlice";
 
-
-export const Home = (): JSX.Element => {
+export const Home = (): JSX.Element => {  
 
   const { items } = useSelector((state: RootState) => state.cart);
   const { products } = useSelector((state: RootState) => state.products);
@@ -28,7 +25,6 @@ export const Home = (): JSX.Element => {
     dispatch(getProducts(newProducts))
   }
 
- 
   useEffect(() => {
     fetchApi();
     // eslint-disable-next-line
@@ -43,50 +39,22 @@ export const Home = (): JSX.Element => {
 
 
   return (
-    <>
-      <h1>eCommerce</h1>
-      <section className={styles["container"]}>
-        <section className={styles["products"]}>
-          <h1>To Go Products</h1>
-          <div className={styles["cards"]}>
-            {products.map(({ id, title, image, price, selected }) => (
-              <Card
-                key={id}
-                id={id}
-                title={title}
-                image={image}
-                price={price}
-                selected={selected}
-              />
-            ))}
-          </div>
-        </section>
-        <section className={styles["products-cart"]}>
-          <h1>Your Cart</h1>
-          {items?.length > 0 ? (
-            <section>
-              <div className={styles["cards"]}>
-                {items.map(
-                  ({ id, title, image, price, quantity, totalPrice }) => (
-                    <AddProductCart
-                      key={id}
-                      id={id}
-                      title={title}
-                      image={image}
-                      price={price}
-                      quantity={quantity}
-                      totalPrice={totalPrice}
-                    />
-                  )
-                )}
-              </div>
-              <TotalPriceCart />
-            </section>
-          ) : (
-            <p>Your cart is empty</p>
-          )}
-        </section>
+    <section className={styles["container"]}>
+      <section className={styles["products"]}>
+        <h1>To Go Products</h1>
+        <div className={styles["cards"]}>
+          {products.map(({ id, title, image, price, selected }) => (
+            <Card
+              key={id}
+              id={id}
+              title={title}
+              image={image}
+              price={price}
+              selected={selected}
+            />
+          ))}
+        </div>
       </section>
-    </>
+    </section>
   );
 }
