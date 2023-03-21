@@ -8,7 +8,7 @@ export const TotalPriceCart = (): JSX.Element => {
   const { subtotalPriceCart, tax, totalCart } = useSelector((state: RootState) => state.cart);
 
   return (
-    <section className={styles["total-price-cart"]}>
+    <section className={styles["cart-total-price"]}>
       <p> Subtotal:</p>
       <small>{formatNumber(subtotalPriceCart)}</small>
       <p>Tax:</p>

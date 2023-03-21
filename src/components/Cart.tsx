@@ -21,7 +21,7 @@ export const Cart = (): JSX.Element => {
         <h1>Your Cart</h1>
         {items?.length > 0 ? (
           <>
-            <section className={styles["cards2"]}>
+            <section className={styles["showCart-cards"]}>
               {items.map(
                 ({ id, title, image, price, quantity, totalPrice }) => (
                   <AddProductCart
