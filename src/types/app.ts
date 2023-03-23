@@ -36,6 +36,11 @@ export interface ShowCart {
   showCart: boolean
 }
 
+export interface ApiError {
+  code: number;
+  message: string
+}
+
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector 
 
