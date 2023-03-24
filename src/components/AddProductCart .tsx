@@ -30,12 +30,14 @@ export const AddProductCart = ({
   return (
     <>
       <section className={styles["cart"]}>
-        <figcaption>
+        <figcaption >
           <img className={styles["cart-image"]} src={image} alt={title} />
-          <p className={styles["cart-imageCount"]}>{quantity}</p>
         </figcaption>
-        <aside className={styles["cart-body"]}>
-          <h5>{title.substring(0, 20)}</h5>
+        <aside
+          // style={{ border: "solid 1px green" }}
+          className={styles["cart-body"]}
+        >
+          <h5>{title.substring(0, 15)}</h5>
           <p>{formatNumber(price)}</p>
 
           <aside className={styles["cart-total"]}>
@@ -53,14 +55,13 @@ export const AddProductCart = ({
             >
               +
             </button>
-            <small>
-              {formatNumber(totalPrice as number)}
-            </small>
+            <small>{formatNumber(totalPrice as number)}</small>
           </aside>
         </aside>
         <button
           onClick={() => deleteProduct({ id })}
           className={styles["cart-trash"]}
+          // style={{ border: "solid 1px green" }}
         >
           <CartTrash />
         </button>

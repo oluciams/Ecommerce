@@ -75,30 +75,29 @@ button {
   grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
   gap: 0.6rem;
   padding: 0.5rem;
-  margin: auto; 
-  border: solid 2px green;
+  margin: auto;
 }
 
 .showCart-products {
   border-radius: 30px;
-  width: 50%;
+  width: 40%;
   background-color: white;
   display: none; 
   position: fixed;
   right: 0rem;
   top: 0rem;
-  border: solid 1px blue; 
+  box-shadow: 4px 4px 40px black;
+  
 }
 
 .showCart-cards {
-  display: grid;
-  grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+  display: grid; 
+  grid-template-rows: repeat(auto-fit, 1fr);
   gap: 0.2rem;
-  height: 70%;
-  margin: 0 1rem;
-  position: fixed;
+  height: 80%;
+  padding: 0.2rem; 
   overflow-y: auto;
-  border: solid 1px red;
+  border-bottom: solid 1px #6B00F5;
 }
 
 .card {
@@ -149,15 +148,40 @@ button {
 
 .cart { 
   display: flex;
-  margin: auto;
-  padding: 0.2rem;
-  border-bottom: 1px solid #6B00F5;
-  border: solid 2px grey;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 7rem;
+  
+  /* width: 100%; */
+  /* margin: auto;
+  padding: 0.5rem; 
+  border-bottom: 1px solid #6B00F5; */
+  border: solid 2px grey; 
+  /* border-radius: 10px; */
 }
 
 
+.cart-button {
+   border-radius: 50%;
+   font-weight: bold;
+   width: 1.5rem;
+   font-size: small;
+   margin: 0.2rem;
+}
+
+
+.cart-trash{
+    border: white;
+    background-color: white;
+    border-radius: 0;
+    height: 2rem;
+  } 
+
+/* 
 .cart-image {
-  width: 2.5rem; 
+  height: auto;
+  width: 2.5rem;
+  margin: 0.4rem; 
 }
 
 .cart-imageCount {  
@@ -188,23 +212,21 @@ button {
     border: white;
     background-color: white;
     margin-top: 0;
-    padding: 0;
+    padding: 0.5rem;
     border-radius: 0;
     font-size: 0.5rem;
     margin: auto;
     height: 2rem;
-  }
+  } */
 
 .cart-total-price {
   text-align: end;
   font-size: 1.2rem;
   font-weight: bold;
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 60% 30%;
   grid-auto-rows: 1.5rem;
-  position: fixed;
-  right: 2rem;
-  bottom: 1rem;
+  padding: 1rem 0; 
 }
 
 .total-price {
@@ -275,9 +297,9 @@ button {
   }
 
   .showCart-cards {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
-    margin: 0 2rem;
+    height: 74%;
   }
 
   .card {
@@ -289,12 +311,14 @@ button {
     margin-top: 2rem;
   }
   
-  .cart {  
-    padding: 0.5rem;
+  .cart {
+    padding: 1rem;
   }
 
   .cart-image {
-    width: 4rem; 
+    width: 3rem;
+    height: auto;
+    margin: 1rem;
   }
 
   .cart-imageCount {
