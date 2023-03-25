@@ -7,6 +7,7 @@ import { getSubtotalPrice } from "../redux-store/reducer/slices/cartSlice";
 import styles from "../styles.module.css";
 import { getProducts } from "../redux-store/reducer/slices/productsSlice";
 
+
 export const Home = (): JSX.Element => {  
 
   const { items } = useSelector((state: RootState) => state.cart);
@@ -17,7 +18,7 @@ export const Home = (): JSX.Element => {
 
   async function fetchApi() {
     try {
-      const response = await fetch("https://fakestoreapi.com/products?limit=10");
+      const response = await fetch("https://fakestoreapi.com/products?limit=20");
       const data = await response.json();
       const newProducts = data.map((product: Product) => ({
         ...product,
@@ -26,13 +27,10 @@ export const Home = (): JSX.Element => {
       
       dispatch(getProducts(newProducts))
       
-    } catch (error) {
-      const apiError: ApiError = {
-        code: 522,
-        message: "Api not responding"
-      }
-      setError(apiError)
+    } catch (error: any) {
+      setError(error)
     }
+    
   }
 
   useEffect(() => {
@@ -47,30 +45,28 @@ export const Home = (): JSX.Element => {
     // eslint-disable-next-line
   }, [items]);
 
+  if (error) return <p className={styles["ApiError"]}>Error message: {error.message}</p>
+  if (products.length === 0) return <h1>Loading . . .</h1>
 
   return (
-    <section className={styles["container"]}>
-      <section className={styles["products"]}>
-        <h1>To Go Products</h1>
-        {error && (
-          <div className={styles["ApiError"]}>
-            <p>Error code: {error.code}</p>
-            <p>Error message: {error.message}</p>
+    <>
+      <section className={styles["container"]}>
+        <section className={styles["products"]}>
+          <h1>Products</h1>
+          <div className={styles["cards"]}>
+            {products.map(({ id, title, image, price, selected }) => (
+              <Card
+                key={id}
+                id={id}
+                title={title}
+                image={image}
+                price={price}
+                selected={selected}
+              />
+            ))}
           </div>
-        )}
-        <div className={styles["cards"]}>
-          {products.map(({ id, title, image, price, selected }) => (
-            <Card
-              key={id}
-              id={id}
-              title={title}
-              image={image}
-              price={price}
-              selected={selected}
-            />
-          ))}
-        </div>
+        </section>
       </section>
-    </section>
+    </>
   );
 }
