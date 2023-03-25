@@ -34,7 +34,6 @@ export const AddProductCart = ({
           <img className={styles["cart-image"]} src={image} alt={title} />
         </figcaption>
         <aside
-          // style={{ border: "solid 1px green" }}
           className={styles["cart-body"]}
         >
           <h5>{title.substring(0, 15)}</h5>
@@ -61,7 +60,6 @@ export const AddProductCart = ({
         <button
           onClick={() => deleteProduct({ id })}
           className={styles["cart-trash"]}
-          // style={{ border: "solid 1px green" }}
         >
           <CartTrash />
         </button>
