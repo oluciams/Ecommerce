@@ -46,7 +46,7 @@ export const Home = (): JSX.Element => {
   }, [items]);
 
   if (error) return <p className={styles["ApiError"]}>Error message: {error.message}</p>
-  if (products.length === 0) return <h1>Loading . . .</h1>
+  
 
   return (
     <>
@@ -54,16 +54,18 @@ export const Home = (): JSX.Element => {
         <section className={styles["products"]}>
           <h1>Products</h1>
           <div className={styles["cards"]}>
-            {products.map(({ id, title, image, price, selected }) => (
-              <Card
-                key={id}
-                id={id}
-                title={title}
-                image={image}
-                price={price}
-                selected={selected}
-              />
-            ))}
+            {products.length === 0 && <h1>Loading . . .</h1>}
+            {products.length > 0 &&
+              products.map(({ id, title, image, price, selected }) => (
+                <Card
+                  key={id}
+                  id={id}
+                  title={title}
+                  image={image}
+                  price={price}
+                  selected={selected}
+                />
+              ))}
           </div>
         </section>
       </section>
