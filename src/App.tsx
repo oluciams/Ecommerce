@@ -7,13 +7,13 @@ import { Cart } from "./components/Cart";
 
 function App() {
   return (
-    <section className={styles["App"]}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <section className={styles["App"]}>
         <Header />
         <Cart />
         <Home />
-      </Provider>
-    </section>
+      </section>
+    </Provider>
   );
 }
 

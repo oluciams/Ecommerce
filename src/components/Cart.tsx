@@ -18,7 +18,7 @@ export const Cart = (): JSX.Element => {
       </label>
       <input id={cartCheckboxId} type="checkbox" hidden />
       <aside className={styles["showCart-products"]}>
-        <h1>Your Cart</h1>
+        <h1 className={styles["showCart-title"]}>Your Cart</h1>
         {items?.length > 0 ? (
           <>
             <section className={styles["showCart-cards"]}>
@@ -37,7 +37,7 @@ export const Cart = (): JSX.Element => {
               )}
             </section>
             <TotalPriceCart />
-            </>
+          </>
         ) : (
           <p>Your cart is empty</p>
         )}

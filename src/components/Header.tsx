@@ -1,7 +1,14 @@
+import styles from "../styles.module.css";
+
 export const Header = (): JSX.Element => {
+
   return (
-    <header>
-      <h1>eCommerce</h1> 
+    <header className={styles["nabvar"]}>
+      <a href="/">eCommerce</a>
+      <nav >
+        <a href="/"> Log In</a>
+        <a href="/"> Sign Up</a>
+      </nav>
     </header>
   );
-}
+};

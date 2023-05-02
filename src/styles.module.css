@@ -16,19 +16,20 @@ body {
   background-color:  #E5E5E5;
   background-repeat: no-repeat, no-repeat, no-repeat;
   background-size: 40vh, 20vh, 50vh;
-  background-attachment: fixed;
+  background-attachment: fixed; 
 }
 
-.App { 
-  height:100vh;
-  width: 100%; 
-  text-align: center;
-  margin: auto; 
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  margin-right: 1.5rem;
 }
 
 h1 {
-  padding: 0.2rem;
+  padding: 0.3rem;
   font-size: 1.3rem;
+  text-align: center;
 }
 
 h5 {
@@ -39,16 +40,19 @@ h5 {
 p {
   font-size: 1rem;
   font-weight: bold;
+  text-align: center;
 }
 
 img {
-  height: auto;
-  width: 3rem;
+  
+  height: 4rem;
+  width: 3.5rem;
   margin: 0.3rem;
 }
 
 button {
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
   padding: 0.2rem;
   border: 1px solid #6B00F5;
   border-radius: 15px;
@@ -58,21 +62,41 @@ button {
   color: beige;  
 }
 
-.container {
+.App { 
+  height:100vh;
+  width: 100%;
+}
+
+.nabvar {
   display: flex;
+  align-items: center;  
+  gap: 2.5rem;  
+  background-color:  #E5E5E5;
+  box-shadow: 5px 5px 30px gray;
+  height: 3rem; 
+  padding: 1rem;
+  position: fixed;
+  z-index: 999; 
+  width: 100%;
+}
+
+.container {
+  border: solid 1px #E5E5E5;
+  text-align: center;
   justify-content: center;
-  border-radius: 30px;
 }
 
 .products {
-  border-radius: 30px;
+  border-radius: 0px 0px 30px 30px;
   background: white;
-  width: 40%;
+  width: 80%;
+  margin: auto;
+  margin-top: 3rem;
 }
 
 .cards {
   display: grid;
-  grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 0.6rem;
   padding: 0.5rem;
   margin: auto;
@@ -80,33 +104,33 @@ button {
 
 .showCart-products {
   border-radius: 30px;
-  width: 40%;
+  width: 70%;
   background-color: white;
   display: none; 
   position: fixed;
   right: 0rem;
   top: 0rem;
-  box-shadow: 4px 4px 40px black;
-  
+  box-shadow: 4px 4px 40px black;  
 }
 
 .showCart-cards {
-  height: 80vh;
+  height: 72vh;
   overflow-y: auto;
   border-bottom: solid 1px grey;
 }
 
 .card {
   display: inline;
-  padding: 0.1rem;
-  border: 1px solid aliceblue;
+  padding: 0.1rem; 
   border-radius: 10px;
   background-color: aliceblue;
   justify-content: center;
+  
 }
 
 .card-body {
-  margin-top: 0.5rem;
+  margin: auto;
+  width: 7rem;
   display: flex;
   flex-direction: column;
 }
@@ -126,6 +150,7 @@ button {
   justify-content: center;
   padding: 2px;
   position: absolute;
+  position: fixed;
   right: 1rem;
   top: 0.5rem;
   transition: all .3s ease;
@@ -148,6 +173,10 @@ button {
   background: #303030;
   opacity: 0.6;
   z-index: -1;
+}
+
+.showCart-title {
+  margin-top: 3rem;
 }
 
 .cart { 
@@ -192,7 +221,7 @@ button {
   font-weight: bold;
   display: grid;
   grid-template-columns: 60% 30%;
-  grid-auto-rows: 1.3rem;
+  grid-auto-rows: 1.4rem;
   margin-top: 0.5rem;
 }
 
@@ -207,11 +236,11 @@ button {
   background-color: rgb(239, 210, 210);
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
 
   h1 {
     padding: 0.5rem;
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   h5 {
@@ -237,12 +266,13 @@ button {
     font-size: 1rem;
   }
 
-  .App {
-    width: 80%;
+  .nabvar {
+    justify-content: space-around;
+    font-size: 1.3rem;
   }
 
   .products {
-    width: 100%;
+    width: 90%;
   }
 
   .cards {
@@ -252,18 +282,18 @@ button {
   }
 
   .showCart-button {
-    height: 3rem;
+    height: 2.5rem;
     right: 2rem;
-    top: 1rem;
-    width: 3rem;
+    width: 2.5rem;
+    top: 0.3rem;
   }
 
   .showCart-products {
-    width: 40%;
+    width: 50%;
   }
 
   .showCart-cards {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
     height: 74%;
   }
@@ -278,7 +308,7 @@ button {
   }
 
   .card-body {
-    margin-top: 2rem;
+    width: 12rem;
   }
   
   .cart {
@@ -308,8 +338,13 @@ button {
   .cart-total-price {
     font-size: 1.5rem;
     grid-auto-rows: 2rem; 
-    grid-auto-rows: 1.5rem;
+    grid-auto-rows: 2rem;
     margin-top: 1rem;
   }
 } 
 
+@media (min-width: 992px) {
+  .showCart-products {
+    width: 38%;
+  }
+}
